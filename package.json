@@ -1,0 +1,13 @@
+{
+  "name": "hoquet",
+  "description": "JavaScript templating loosely based on Hiccup (Clojure)",
+  "version": "0.1.0",
+  "main": "hoquet.js",
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*"
+  },
+  "scripts": {
+    "test": "mocha --no-colors --reporter spec"
+  }
+}
