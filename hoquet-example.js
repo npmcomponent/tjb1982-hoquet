@@ -1,5 +1,5 @@
 var http = require('http'),
-    h = require('hoquet');
+    h = require('./hoquet');
 
 function layout(c) {
   var out;

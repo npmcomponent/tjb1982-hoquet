@@ -24,7 +24,10 @@ Hoquet.prototype.render = function(a) {
     if (i === 1) {
       if (a[i] instanceof Object && !(a[i] instanceof Array))
         for (var key in a[i])
-          out += ' ' + key + '=' + '"' + a[i][key] + '"';
+          if (a[i][key])
+            out += ' ' + key + '=' + '"' + a[i][key] + '"';
+          else
+            out += ' ' + key;
       if (!selfClosing)
         out += '>';
     }
