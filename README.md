@@ -1,7 +1,5 @@
 # hoquet
 
-[![Build Status](https://secure.travis-ci.org/user/hoquet.png?branch=master)](http://travis-ci.org/user/hoquet)
-
 
 ## Installation
 
