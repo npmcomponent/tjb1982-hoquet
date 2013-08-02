@@ -1,6 +1,6 @@
 # hoquet
 
-Templating loosely based on Clojure's Hiccup.
+JavaScript templating loosely based on Clojure's Hiccup.
 
 ## Example
 ```javascript
