@@ -3,6 +3,9 @@
   "description": "Simple templating loosely based on Clojure's Hiccup",
   "version": "0.1.0",
   "main": "hoquet.js",
+  "dependencies": {
+    "hoquet":"0.1.0"
+  },
   "devDependencies": {
     "chai": "*",
     "mocha": "*"
