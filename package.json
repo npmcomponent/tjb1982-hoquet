@@ -1,7 +1,7 @@
 {
   "name": "hoquet",
   "description": "Simple templating loosely based on Clojure's Hiccup",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "index.js",
   "devDependencies": {
     "chai": "*",

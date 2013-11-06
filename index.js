@@ -1,57 +1,64 @@
 Hoquet = function() {};
 
-function isStringOrNumber(test) {
+function isStringOrNumber(tester) {
   function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
   }
-  return isNumber(test) || typeof test === 'string';
+  return isNumber(tester) || typeof tester === 'string';
 }
 
 Hoquet.prototype.render = function(a) {
-  
-  if (isStringOrNumber(a)) return a;
-  if (!(a instanceof Array)) return '';
-  
-  var out = '',
+
+  function render (a) {
+    if (isStringOrNumber(a)) return a;
+    if (!(a instanceof Array)) return '';
+    
+    var out = '',
       selfClosing = true,
       last = a.length > 1 && a[a.length - 1],
       i;
-  
-  if (a[0] instanceof Array)
-    return a.map(this.render, this).join('');
-  
-  out = '<' + a[0];
-  
-  if (isStringOrNumber(last) ||
-      typeof last === 'undefined' || 
-      last instanceof Array)
-    selfClosing = false;
-  
-  for (i = 1; i < a.length; i++) {
-    if (i === 1) {
-      if (a[i] instanceof Object && !(a[i] instanceof Array))
-        for (var key in a[i])
-          if (a[i][key])
-            out += ' ' + key + '=' + '"' + a[i][key] + '"';
-          else
-            out += ' ' + key;
-      if (!selfClosing)
-        out += '>';
+    
+    if (a[0] instanceof Array)
+      return a.map(render, this).join('');
+    
+    out = '<' + a[0];
+    
+    if (isStringOrNumber(last) ||
+        typeof last === 'undefined' || 
+        last instanceof Array)
+      selfClosing = false;
+    
+    for (i = 1; i < a.length; i++) {
+      if (i === 1) {
+        if (a[i] instanceof Object && !(a[i] instanceof Array))
+          for (var key in a[i])
+            if (a[i][key])
+              out += ' ' + key + '=' + '"' + a[i][key] + '"';
+            else
+              out += ' ' + key;
+        if (!selfClosing)
+          out += '>';
+      }
+      
+      if (a[i] instanceof Array)
+        out += render(a[i]);
+      else if (isStringOrNumber(a[i]))
+        out += a[i];
     }
     
-    if (a[i] instanceof Array)
-      out += this.render(a[i]);
-    else if (isStringOrNumber(a[i]))
-      out += a[i];
+    if (!selfClosing)
+      out += '</' + a[0] + '>';
+    else
+      out += ' />';
+    
+    return out;
   }
   
-  if (!selfClosing)
-    out += '</' + a[0] + '>';
-  else
-    out += ' />';
+  if (arguments.length > 1)
+    return [].map.call(arguments, render, this).join('');
   
-  return out;
-
+  return render(a);
+  
 };
 
 Hoquet.prototype.scripts = function(src) {
