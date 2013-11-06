@@ -1,8 +1,15 @@
 Hoquet = function() {};
 
+function isStringOrNumber(test) {
+  function isNumber(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+  }
+  return isNumber(test) || typeof test === 'string';
+}
+
 Hoquet.prototype.render = function(a) {
   
-  if (typeof a === 'string') return a;
+  if (isStringOrNumber(a)) return a;
   if (!(a instanceof Array)) return '';
   
   var out = '',
@@ -15,7 +22,7 @@ Hoquet.prototype.render = function(a) {
   
   out = '<' + a[0];
   
-  if (typeof last === 'string' ||
+  if (isStringOrNumber(last) ||
       typeof last === 'undefined' || 
       last instanceof Array)
     selfClosing = false;
@@ -34,7 +41,7 @@ Hoquet.prototype.render = function(a) {
     
     if (a[i] instanceof Array)
       out += this.render(a[i]);
-    else if (typeof a[i] === 'string')
+    else if (isStringOrNumber(a[i]))
       out += a[i];
   }
   

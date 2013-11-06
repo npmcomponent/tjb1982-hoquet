@@ -1,6 +1,24 @@
+
 # hoquet
 
-JavaScript templating loosely based on Clojure's Hiccup.
+  Simple JavaScript templating based on Clojure's Hiccup
+
+# Installation
+
+## Installation with component.io
+
+  Install with [component(1)](http://component.io):
+
+    $ component install tjb1982/hoquet
+
+
+
+Install with npm:
+
+```
+npm install --save hoquet
+```
+
 
 ## Example
 ```javascript
@@ -57,15 +75,6 @@ outputs:
 </html>
 ```
 
-## Installation
-
-Install with npm:
-
-```
-npm install --save hoquet
-```
-
-
 ## API
 
 ### hoquet()
@@ -79,3 +88,8 @@ From the repo root:
 npm install
 npm test
 ```
+
+## License
+
+MIT
+
