@@ -4,7 +4,7 @@ function isStringOrNumber(tester) {
   function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
   }
-  return isNumber(tester) || typeof tester === 'string';
+  return typeof tester === 'string' || isNumber(tester);
 }
 
 Hoquet.prototype.render = function(a) {
