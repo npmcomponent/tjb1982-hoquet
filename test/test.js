@@ -64,7 +64,7 @@ describe('hoquet.render', function() {
     );
   });
 
-  it('should handle self-closing elements by assuming elements without content are self-closing', function() {
+  it('should handle self-closing elements by assuming elements without content are self-closing, e.g. ["meta"] or ["meta", {foo: "bar"}],  not ["meta", undefined/false/null/[]/{}]', function() {
     expect(hoquet.render(['meta'])).to.equal('<meta />');
     expect(hoquet.render(['meta', {foo: 'bar'}])).to.equal('<meta foo="bar" />');
     expect(hoquet.render(['br'])).to.equal('<br />');
@@ -72,7 +72,7 @@ describe('hoquet.render', function() {
   });
 });
 
-describe('hoquet.scripts()', function() {
+describe('hoquet.scripts', function() {
   
   it('should create a generic script tag with only naming the scr attribute', function() {
     expect(hoquet.scripts('js/foo.js')).to.equal('<script type="text/javascript" src="js/foo.js"></script>');
