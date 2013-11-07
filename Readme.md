@@ -3,21 +3,16 @@
 
   Simple JavaScript templating based on Clojure's Hiccup
 
-# Installation
 
-## Installation with component.io
+## Installation
 
-  Install with [component(1)](http://component.io):
+Install with [component(1)](http://component.io):
 
     $ component install tjb1982/hoquet
 
-
-
 Install with npm:
 
-```
-npm install --save hoquet
-```
+    $ npm install --save hoquet
 
 
 ## Example
@@ -77,7 +72,50 @@ outputs:
 
 ## API
 
-### hoquet()
+### .render
+
+function that takes a structured array or a variable list of structured arrays and converts them to a String of HTML.
+
+e.g.
+
+```javascript
+
+    var hoquet = require('hoquet');
+    
+    hoquet.render(['p','foo'],['p','bar']);
+    // <p>foo</p><p>bar</p>
+    
+    hoquet.render([['p','foo'],['p','bar']]);
+    // <p>foo</p><p>bar</p>
+    
+    hoquet.render([[[[[['p','foo'],['p','bar']]]]]]);
+    // <p>foo</p><p>bar</p>
+
+    
+    hoquet.render(['p', 'This is a ', ['span', 'paragraph'], ' with a span']);
+    // <p>This is a <span>paragraph</span> with a span</p>
+
+    hoquet.render(['div',{id: 'foo', class: 'bar'}, null]);
+    //<div id="foo" class="bar"></div>
+
+    hoquet.render(['meta', {foo: 'bar'}]);
+    // <meta foo="bar" />
+
+    hoquet.render(['ul', ['bread', 'milk', 'eggs'].map(function(x) {
+      return(['li', x]);
+    })]);
+    // <ul><li>bread</li><li>milk</li><li>eggs</li></ul>
+```
+
+> for more specifics, see `./test/test.js`
+
+### .scripts
+
+convenience method for creating script tags by src attr
+
+### .styles
+
+convenience method for creating style tags by href attr
 
 
 ## Testing
