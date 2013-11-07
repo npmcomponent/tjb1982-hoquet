@@ -7,6 +7,14 @@ function isStringOrNumber(tester) {
   return typeof tester === 'string' || isNumber(tester);
 }
 
+function hasKeys(object) {
+  if (object instanceof Object)
+    for (var k in object)
+      if (Object.prototype.hasOwnProperty.call(object, k))
+        return true;
+  return false;
+};
+
 Hoquet.prototype.render = function(a) {
 
   function render (a) {
@@ -20,17 +28,21 @@ Hoquet.prototype.render = function(a) {
     
     if (a[0] instanceof Array)
       return a.map(render, this).join('');
+    else if (a[0] instanceof Object && !hasKeys(a[0]))
+      a[0] = undefined;
     
     out = '<' + a[0];
     
     if (isStringOrNumber(last) ||
         typeof last === 'undefined' || 
-        last instanceof Array)
+        last instanceof Array ||
+	a.length > 2)
       selfClosing = false;
     
     for (i = 1; i < a.length; i++) {
       if (i === 1) {
-        if (a[i] instanceof Object && !(a[i] instanceof Array))
+        if (a[i] instanceof Object &&
+	    !(a[i] instanceof Array))
           for (var key in a[i])
             if (a[i][key])
               out += ' ' + key + '=' + '"' + a[i][key] + '"';
@@ -40,7 +52,7 @@ Hoquet.prototype.render = function(a) {
           out += '>';
       }
       
-      if (a[i] instanceof Array)
+      if (a[i] instanceof Array && a[i].length > 0)
         out += render(a[i]);
       else if (isStringOrNumber(a[i]))
         out += a[i];
@@ -70,7 +82,7 @@ Hoquet.prototype.scripts = function(src) {
   if (arguments.length > 1) {
     return [].map.call(arguments, script, this).join('');
   }
-  
+
   function script(src) {
     return self.render(["script", {"type":"text/javascript", "src":src}, '']);
   }
