@@ -1,4 +1,3 @@
-
 # hoquet
 
   Simple JavaScript templating based on Clojure's Hiccup
@@ -111,12 +110,27 @@ e.g.
 
 ### .scripts
 
-convenience method for creating script tags by src attr
+convenience method for creating basic script tags by src attr
+
+    hoquet.scripts('js/main.js', 'js/foo.js');
+    // <script type="text/javascript" src="js/main.js"></script><script ...></script>
 
 ### .styles
 
-convenience method for creating style tags by href attr
+convenience method for creating basic style tags by href attr
 
+    hoquet.styles('css/main.css', 'css/foo.css');
+    // <link rel="stylesheet" href="css/main.css" /><link ... />
+
+### .doc
+
+convenience method that creates an HTML document (only HTML5 right now):
+    
+    hoquet.doc('html5', hoquetArray);
+    
+which basically does:
+
+    return "<!doctype html>" + hoquet.render(hoquetArray);
 
 ## Testing
 
