@@ -1,6 +1,10 @@
 {
   "name": "hoquet",
   "description": "Simple templating loosely based on Clojure's Hiccup",
+  "repository": {
+    "type":"git",
+    "url":"http://github.com/tjb1982/hoquet"
+  },
   "version": "0.1.4",
   "main": "index.js",
   "devDependencies": {
