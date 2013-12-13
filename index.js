@@ -117,8 +117,5 @@ Hoquet.prototype.doc = function(type, a) {
   }
 };
 
-Hoquet.prototype.strScript = function(script) {
-  return '(' + String(script) + ')()';
-}
 
 module.exports = new Hoquet;
