@@ -20,16 +20,15 @@ var http = require('http'),
     h = require('hoquet');
 
 function layout(c) {
-  var out =
+  return (
     ['html',
      ['head',
       ['title', c.title],
       h.styles('/css/reset.css',
                '/css/style.css'),
       c.head],
-     ['body', {'ng-app':'MyApp'}, c.body]];
-  
-  return out;
+     ['body', {'ng-app':'MyApp'}, c.body]]
+  );
 }
 
 var index = layout({
