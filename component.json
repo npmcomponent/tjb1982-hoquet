@@ -3,7 +3,7 @@
   "repo": "tjb1982/hoquet",
   "description": "Simple JavaScript templating based on Clojure's Hiccup",
   "version": "0.0.1",
-  "keywords": ["templating", "html", "clojure", "hiccup"],
+  "keywords": ["template", "templates", "templating", "html", "clojure", "hiccup"],
   "dependencies": {},
   "development": {},
   "license": "MIT",
