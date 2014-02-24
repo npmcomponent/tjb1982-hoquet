@@ -5,7 +5,7 @@
     "type":"git",
     "url":"http://github.com/tjb1982/hoquet"
   },
-  "version": "0.1.4",
+  "version": "0.1.5",
   "main": "index.js",
   "devDependencies": {
     "chai": "*",

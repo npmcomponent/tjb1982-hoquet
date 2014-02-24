@@ -117,5 +117,22 @@ Hoquet.prototype.doc = function(type, a) {
   }
 };
 
+Hoquet.prototype.renderFile = function(file, context, callback) {
+  var fs;
+  try {
+    fs = require('fs');
+    fs.readFile(file, 'utf8', function(e, data) {
+      e ? callback(e)
+      : (function() {
+        var forms = eval(data);
+        callback(null,
+          Hoquet.prototype.doc("html5", forms)
+        );
+      })();
+    });
+  } catch (e) {
+    callback(e);
+  }
+}
 
 module.exports = new Hoquet;
