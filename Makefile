@@ -8,4 +8,15 @@ components: component.json
 clean:
 	rm -fr build components template.js
 
-.PHONY: clean
+hoquet.js: components
+	@component build --standalone hoquet --out . --name hoquet
+
+hoquet.min.js: hoquet.js
+	@uglifyjs $< > $@
+
+hoquet.min.js.gz: hoquet.min.js
+	@zopfli -c $< > $@
+
+all: clean build hoquet.min.js.gz
+
+.PHONY: clean all

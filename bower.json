@@ -1,0 +1,30 @@
+{
+  "name": "hoquet",
+  "main": "hoquet.min.js",
+  "version": "0.1.5",
+  "homepage": "https://github.com/tjb1982/hoquet",
+  "authors": [
+    "Tom Brennan <tom@onclickstudios.com>"
+  ],
+  "description": "Simple templating loosely based on Clojure's Hiccup",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "templating",
+    "clojure",
+    "client",
+    "server"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
