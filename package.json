@@ -1,17 +1,16 @@
 {
-  "name": "hoquet",
-  "description": "Simple templating loosely based on Clojure's Hiccup",
-  "repository": {
-    "type":"git",
-    "url":"http://github.com/tjb1982/hoquet"
-  },
-  "version": "0.1.5",
+  "name": "tjb1982-hoquet",
+  "description": "Simple JavaScript templating based on Clojure's Hiccup",
+  "version": "0.0.1",
+  "keywords": [
+    "template",
+    "templates",
+    "templating",
+    "html",
+    "clojure",
+    "hiccup"
+  ],
   "main": "index.js",
-  "devDependencies": {
-    "chai": "*",
-    "mocha": "*"
-  },
-  "scripts": {
-    "test": "mocha --no-colors --reporter spec"
-  }
+  "dependencies": {},
+  "license": "MIT"
 }
